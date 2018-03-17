@@ -17,7 +17,8 @@ class Solution(object):
         """
         pre = None
         current = head
-        while current is not None:
+        # while current is not None: is not necessary
+        while current:
             node_next = current.next 
             current.next = pre
             pre = current

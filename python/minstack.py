@@ -4,7 +4,7 @@ class MinStack:
         """
         initialize your data structure here.
         """
-        self.item = []
+        self.items = []
         self.min = []
         
 
@@ -13,7 +13,7 @@ class MinStack:
         :type x: int
         :rtype: void
         """
-        self.item.append(x)
+        self.items.append(x)
         if not self.min or x<self.min[-1]:
             self.min.append(x)
 
@@ -21,15 +21,16 @@ class MinStack:
         """
         :rtype: void
         """
-        if self.min and self.item[-1] == self.min[-1]:
-            del self.min[-1]
-        del self.item[-1]
+        if self.min and self.items[-1] == self.min[-1]:
+            self.min.pop()
+        if self.items:
+            self.items.pop()
 
     def top(self):
         """
         :rtype: int
         """
-        return self.item[-1]
+        return self.items[-1]
         
 
     def getMin(self):

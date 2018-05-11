@@ -6,11 +6,10 @@ class Solution:
         :rtype: int
         """
         len_task = len(tasks)
-        d = {x:tasks.count(x) for x in tasks}
-        highest = max(d.values())
-        maxfrequency = len([k for k, v in d.items() if v == highest])
-        interval = (highest-1)*(n-maxfrequency+1)+highest*maxfrequency 
-        if interval>= len_task:
-            return interval
-        else:
-            return len_task
+        task_to_count = {task:0 for task in set(tasks)}
+        for task in tasks:
+            task_to_count[task] += 1
+        highest = max(task_to_count.values())
+        maxfrequency = len([k for k, v in task_to_count.items() if v == highest])
+        interval = (highest-1)*(n-maxfrequency+1)+highest*maxfrequency
+        return max(len_task, interval)
